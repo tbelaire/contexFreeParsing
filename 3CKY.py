@@ -172,5 +172,18 @@ class CKY():
 dataset=Dataset('parse_train.counts.out')
 
 parser = CKY(dataset)
-print parser.parse("When was the _RARE_ invented ?")
 #cProfile.run ('parser.parse("When was the _RARE_ invented ?")')
+if __name__ == "__main__" :
+    import sys
+    for sentence in sys.argv[1:]:
+        if sentence == "dump":
+            for e in dataset.N:
+                print e
+            for e in dataset.UR:
+                print e
+            for e in dataset.BR:
+                print e
+
+        else:
+            print sentence
+            print parser.parse(sentence)
